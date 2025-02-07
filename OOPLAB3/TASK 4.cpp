@@ -54,7 +54,7 @@ int main()
   while(1)
   {
     cout << "Please select your Role " << endl;
-    cout << "1: Bilal \n2: Ayesha" << endl;
+    cout << "1: Bilal \n2: Ayesha\n3: Exit" << endl;
     cin >> characterselect;
     if(characterselect == 1)
     {
@@ -107,6 +107,11 @@ int main()
           break;
         }
       }
+     
+    }
+    else
+    {
+      break;
     }
   }
   cout << "Now comparing Both Models " << endl;
