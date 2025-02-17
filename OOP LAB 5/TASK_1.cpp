@@ -5,31 +5,30 @@ class CAR
 	private:
 		int reg_no;
 		string modelName;
-		string *name;
+		//string *name;
+		string name;
 	public:
 	CAR(int regno , string modelN , string owner)
 	{
 		reg_no = regno;
 		modelName = modelN;
-		name = new string;
-		*name = owner;
+		name = owner;
 	}
 	void update(string owner)
 	{
-		name = new string;
-		*name = owner;
+		name = owner;
 	}
 	void displayCarDetails()
 	{
-		cout << "The Name of Model of Car is : " << modelName << endl << "The REGISTRATION No of CAR : " << reg_no << endl << "The Owner of CAR : " << *name << endl;
+		cout << "The Name of Model of Car is : " << modelName << endl << "The REGISTRATION No of CAR : " << reg_no << endl << "The Owner of CAR : " << name << endl;
 	}
-	CAR(CAR &c)
-	{
-		reg_no = c.reg_no;
-		modelName = c.modelName;
-		name = new string;
-		*name = *(c.name);	
-	}	
+//	CAR(CAR &c)
+//	{
+//		reg_no = c.reg_no;
+//		modelName = c.modelName;
+//		name = new string;
+//		*name = *(c.name);	
+//	}	
 		
 };
 int main()
