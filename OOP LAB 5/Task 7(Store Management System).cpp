@@ -100,10 +100,10 @@ public:
   }
   void Add_clothing(clothing &c)
   {
-    C[count_groceries] = new clothing;
-    C[count_groceries] = &c;
+    C[count_clothing] = new clothing;
+    C[count_clothing] = &c;
     cout << "Welcome to store : " << endl;
-    cout << "Add the grocery Item in the given Sequence " << endl;
+    cout << "Add the clothing Item in the given Sequence " << endl;
     cout << "1-Name of Product || 2-Id of product || 3-Price of product" << endl;
     string name;
     int id;
@@ -111,7 +111,7 @@ public:
     getline(cin >> ws, name);
     cin >> id;
     cin >> price;
-    C[count_groceries]->Add_details(name, id, price);
+    C[count_clothing]->Add_details(name, id, price);
     count_clothing++;
   }
   void Find_Electronics()
