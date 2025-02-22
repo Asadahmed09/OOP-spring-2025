@@ -30,6 +30,7 @@ public:
     name = "";
     price = 0;
   }
+ clothing(string name, int id, double price) : name(name), Product_id(id), price(price) {}
   void Add_details(string name, int id, double price)
   {
     this->name = name;
@@ -51,6 +52,7 @@ public:
     name = "";
     price = 0;
   }
+  groceries(string name, int id, double price) : name(name), Product_id(id), price(price) {}
   void Add_details(string name, int id, double price)
   {
     this->name = name;
@@ -63,13 +65,11 @@ class store
 public:
   int count_electronics, count_clothing, count_groceries;
   store() : count_electronics(0), count_clothing(0), count_groceries(0) {}
-  electronics **E = new electronics *[5];
-  clothing **C = new clothing *[5];
-  groceries **G = new groceries *[5];
-  void Add_electronics(electronics &e)
+  electronics *E[5] = {nullptr};
+  clothing *C[5] = {nullptr};
+  groceries *G[5] = {nullptr};
+  void Add_electronics()
   {
-    E[count_electronics] = new electronics;
-    E[count_electronics] = &e;
     cout << "Welcome to store : " << endl;
     cout << "Add the electronics Item in the given Sequence " << endl;
     cout << "1-Name of Product || 2-Id of product || 3-Price of product" << endl;
@@ -79,13 +79,11 @@ public:
     getline(cin >> ws, name);
     cin >> id;
     cin >> price;
-    *E[count_electronics] = electronics(name, id, price);
+    E[count_electronics] = new electronics(name, id, price);
     count_electronics++;
   }
-  void Add_grocery(groceries &g)
+  void Add_grocery()
   {
-    G[count_groceries] = new groceries;
-    G[count_groceries] = &g;
     cout << "Welcome to store : " << endl;
     cout << "Add the grocery Item in the given Sequence " << endl;
     cout << "1-Name of Product || 2-Id of product || 3-Price of product" << endl;
@@ -95,13 +93,11 @@ public:
     getline(cin >> ws, name);
     cin >> id;
     cin >> price;
-    G[count_groceries]->Add_details(name, id, price);
+    G[count_groceries] = new groceries(name , id , price);
     count_groceries++;
   }
-  void Add_clothing(clothing &c)
+  void Add_clothing()
   {
-    C[count_clothing] = new clothing;
-    C[count_clothing] = &c;
     cout << "Welcome to store : " << endl;
     cout << "Add the clothing Item in the given Sequence " << endl;
     cout << "1-Name of Product || 2-Id of product || 3-Price of product" << endl;
@@ -111,7 +107,7 @@ public:
     getline(cin >> ws, name);
     cin >> id;
     cin >> price;
-    C[count_clothing]->Add_details(name, id, price);
+    C[count_clothing] = new clothing(name, id, price);
     count_clothing++;
   }
   void Find_Electronics()
@@ -127,9 +123,8 @@ public:
         cout << "Name Of product is :  " << E[i]->name << endl;
         cout << "Price Of product is :  " << E[i]->price << endl;
         cout << "ID  Of product is :  " << E[i]->Product_id << endl;
-        return ;
+        return;
       }
-      
     }
   }
   void Find_grocery()
@@ -145,9 +140,8 @@ public:
         cout << "Name Of product is :  " << G[i]->name << endl;
         cout << "Price Of product is :  " << G[i]->price << endl;
         cout << "ID  Of product is :  " << G[i]->Product_id << endl;
-        return ;
+        return;
       }
-      
     }
   }
   void Find_clothing()
@@ -160,73 +154,76 @@ public:
       if (name == C[i]->name)
       {
         cout << "Product Found " << endl;
-        cout << "Name Of product is :  "  << C[i]->name << endl;
-        cout << "Price Of product is :  "  << C[i]->price << endl;
-        cout << "ID  Of product is :  "  << C[i]->Product_id << endl;
-        return ;
+        cout << "Name Of product is :  " << C[i]->name << endl;
+        cout << "Price Of product is :  " << C[i]->price << endl;
+        cout << "ID  Of product is :  " << C[i]->Product_id << endl;
+        return;
       }
-      
     }
   }
   void Sort_electronics()
   {
-    for(int i =0 ; i < count_electronics ; i++)
+    for (int i = 0; i < count_electronics-1; i++)
     {
-      for(int j = 0 ; j < count_electronics ; j++)
+      for (int j = i+1; j < count_electronics; j++)
       {
-        if(E[i]->price>E[j]->price)
+        if (E[i]->price > E[j]->price)
         {
-          double temp;
-          temp = E[j]->price;
-          E[j]->price = E[i]->price;
-          E[j]->price =temp;
+        swap(E[i],E[j]);
         }
       }
     }
-    for(int i =0 ; i < count_electronics ; i++)
+    for (int i = 0; i < count_electronics; i++)
     {
       cout << "Name of Product is : " << E[i]->name << " and price is : " << E[i]->price << endl;
     }
   }
   void Sort_clothing()
   {
-    for(int i =0 ; i < count_clothing ; i++)
+    for (int i = 0; i < count_clothing-1; i++)
     {
-      for(int j = 0 ; j < count_clothing ; j++)
+      for (int j = i+1; j < count_clothing; j++)
       {
-        if(C[i]->price>C[j]->price)
+        if (C[i]->price > C[j]->price)
         {
-          double temp;
-          temp =C[j]->price;
-          C[j]->price = E[i]->price;
-          C[j]->price =temp;
+          swap(C[i],C[j]);
         }
       }
     }
-    for(int i =0 ; i < count_clothing ; i++)
+    for (int i = 0; i < count_clothing; i++)
     {
       cout << "Name of Product is : " << C[i]->name << " and price is : " << C[i]->price << endl;
     }
   }
   void Sort_grocery()
   {
-    for(int i =0 ; i < count_groceries ; i++)
+    for (int i = 0; i < count_groceries; i++)
     {
-      for(int j = 0 ; j < count_groceries ; j++)
+      for (int j = i+1; j < count_groceries; j++)
       {
-        if(G[i]->price>G[j]->price)
+        if (G[i]->price > G[j]->price)
         {
-          double temp;
-          temp = G[j]->price;
-          G[j]->price = G[i]->price;
-          G[j]->price =temp;
+          groceries *temp = G[i];
+          G[i] = G[j];
+          G[j] = temp;
         }
       }
     }
-    for(int i =0 ; i < count_groceries ; i++)
+    for (int i = 0; i < count_groceries; i++)
     {
       cout << "Name of Product is : " << G[i]->name << " and price is : " << G[i]->price << endl;
     }
+  }
+  ~store()
+  {
+    for (int i = 0; i < count_electronics; i++)
+      delete E[i];
+
+    for (int i = 0; i < count_clothing; i++)
+      delete C[i];
+
+    for (int i = 0; i < count_groceries; i++)
+      delete G[i];
   }
 };
 int main()
@@ -236,18 +233,18 @@ int main()
 
   while (true)
   {
-    cout<<"\n----------------- Store Menu ---------------------" << endl;
-    cout<<"1. Add Electronics\n";
-    cout<<"2. Add Clothing\n";
-    cout<<"3. Add Grocery\n";
-    cout<<"4. Find Electronics\n";
-    cout<<"5. Find Clothing\n";
-    cout<<"6. Find Grocery\n";
-    cout<<"7. Sort Electronics by Price\n";
-    cout<<"8. Sort Clothing by Price\n";
-    cout<<"9. Sort Grocery by Price\n";
-    cout<<"0. Exit\n";
-    cout<<"Enter your choice: ";
+    cout << "\n----------------- Store Menu ---------------------" << endl;
+    cout << "1. Add Electronics\n";
+    cout << "2. Add Clothing\n";
+    cout << "3. Add Grocery\n";
+    cout << "4. Find Electronics\n";
+    cout << "5. Find Clothing\n";
+    cout << "6. Find Grocery\n";
+    cout << "7. Sort Electronics by Price\n";
+    cout << "8. Sort Clothing by Price\n";
+    cout << "9. Sort Grocery by Price\n";
+    cout << "0. Exit\n";
+    cout << "Enter your choice: ";
     cin >> choice;
     if (choice == 0)
       break;
@@ -255,20 +252,17 @@ int main()
     {
     case 1:
     {
-      electronics e;
-      s1.Add_electronics(e);
+      s1.Add_electronics();
       break;
     }
     case 2:
     {
-      clothing c;
-      s1.Add_clothing(c);
+      s1.Add_clothing();
       break;
     }
     case 3:
     {
-      groceries g;
-      s1.Add_grocery(g);
+      s1.Add_grocery();
       break;
     }
     case 4:
