@@ -6,3 +6,6 @@
 ![image](https://github.com/user-attachments/assets/68b14fdc-06ab-4169-b49c-c3ede852b688)
 # task 6
 ![image](https://github.com/user-attachments/assets/f80926a4-231b-4c09-b5dc-f3ef3c7ae151)
+# task 7
+![image](https://github.com/user-attachments/assets/aee4c153-30f8-4ab6-8d78-94eb9a9c197c)
+![image](https://github.com/user-attachments/assets/847bc90d-b356-4785-8f66-b3660f227e91)
