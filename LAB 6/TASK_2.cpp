@@ -30,7 +30,7 @@ class electriccar : public car
 {
     public:
     int battery;
-    electriccar(string name,int speed,int seats,int battery) : car(name,speed,seats) ,battery(battery{}
+    electriccar(string name,int speed,int seats,int battery) : car(name,speed,seats) ,battery(battery){}
     void displaydet()
     {
         displaydetails();
@@ -40,5 +40,5 @@ class electriccar : public car
 int main()
 {
     electriccar c1("tesla",200,2,600);
-    c1.displaydetails();
+    c1.displaydet();
 }
