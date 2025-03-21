@@ -8,7 +8,7 @@ class Person
   public:
   Person(string n , string a, string p, string e):name(n),
   address(a),PhoneNumber(p),Email(e){id++;}
-  void displayInfo()
+  virtual void displayInfo()
   {
     cout << "ID : " << id << endl;
     cout << "Name : " << name << endl;
@@ -96,7 +96,6 @@ class Course
 int main()
 {
   student s("CS", 3.1, "2024", "asad", "lahore", "0309999999", "asadahmedk09@gmail.com");
-  s.displayInfo();
   Person *p = &s;
   p->displayInfo();
 }
