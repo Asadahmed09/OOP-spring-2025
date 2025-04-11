@@ -43,5 +43,9 @@ void calculateHeatIndex(Temperature temp, Humidity humi)
 int main()
 {
 
-    
+     Temperature tempObj;
+  Humidity humiObj;
+  tempObj.set_temp(32);
+  humiObj.set_Humidity(70.0);
+  calculateHeatIndex(tempObj, humiObj);
 }
