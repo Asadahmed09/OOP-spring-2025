@@ -26,8 +26,8 @@ public:
 
     void displayDetails()
  {
-        cout << "Car Model: " << model << endl;
-        cout << "Daily Rate: rupee-" << rate << endl;
+        cout << "Car Model : " << model << endl;
+        cout << "Daily Rate : " << rate << endl;
     }
 };
 
@@ -44,7 +44,7 @@ public:
     void displayDetails()
  {
         cout << "Bike Model: " << model << endl;
-        cout << "Daily Rate: rupee-" << rate << endl;
+        cout << "Daily Rate: " << rate << endl;
     }
 };
 
@@ -54,10 +54,10 @@ int main()
     Vehicle* v2 = new Bike("Yamaha YBR", 25.0);
 
     v1->displayDetails();
-    cout << "Rate via getDailyRate(): $" << v1->getDailyRate() << endl << endl;
+    cout << "Rate for Car: " << v1->getDailyRate() << endl << endl;
 
     v2->displayDetails();
-    cout << "Rate via getDailyRate(): $" << v2->getDailyRate() << endl;
+    cout << "Rate for Bike: " << v2->getDailyRate() << endl;
 
     delete v1;
     delete v2;
