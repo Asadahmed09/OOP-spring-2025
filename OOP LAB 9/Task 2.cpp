@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 class SmartDevice 
 {
 public:
@@ -66,7 +65,7 @@ public:
     {
         isOn = true;
         temperature = 22.5;
-        cout << "Thermostat turned ON. Temperature set to " << temperature << "°C" << endl;
+        cout << "Thermostat turned ON. Temperature set to " << temperature <<  endl;
     }
 
     void turnOff() 
@@ -80,11 +79,11 @@ public:
     {
         if (isOn) 
         {
-            cout << "Thermostat is ON. Temperature: " << temperature << "°C" << endl;
+            cout << "Thermostat is ON. Temperature: " << temperature <<  endl;
         } 
         else 
         {
-            cout << "Thermostat is OFF. Temperature: " << temperature << "°C" << endl;
+            cout << "Thermostat is OFF. Temperature: " << temperature <<  endl;
         }
     }
 };
@@ -105,9 +104,7 @@ int main()
     d2->getStatus();
     d2->turnOff();
     d2->getStatus();
-
     delete d1;
     delete d2;
-
     return 0;
 }
